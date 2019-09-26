@@ -1,35 +1,73 @@
 package projet1;
-import java.util.Scanner;
 
 public class Liste {
 
-		// TODO Auto-generated method stub
-		int x;
-		Liste suiv;
-		// TODO fonction estVide / premierElement / resteListe / cons
-		// Construit une liste à partir d'un element et d'une liste 
-		public Liste(int pX, Liste pli) {
-			x = pX;
-			suiv = pli;
-		}		
-		public static boolean estVide(Liste l) {
-			return l==null;		
-		}
-		public static int premierElement(Liste l) {
-			return l.x;
-		}
-		public static Liste resteListe(Liste l) {
-			return l.suiv;
-		}
-		public static Liste cons(int a, Liste l) {
-			return new Liste(a,l);
-		}
-		public static void afficher(Liste l)
-		{
-			while(!estVide(l)) {
-				System.out.println(premierElement(l));
-				l = resteListe(l);			
-			}
-		}
-
+	//
+	// Champs
+	//
+	private Structure x;
+	private Liste suiv;
+	
+	//
+	// Acesseurs
+	//
+	public Structure getX() {
+		return x;
+	}
+	public void setX(Structure x) {
+		this.x = x;
+	}
+	public Liste getSuiv() {
+		return suiv;
+	}
+	public void setSuiv(Liste suiv) {
+		this.suiv = suiv;
+	}
+	
+	//
+	// Contructeur
+	//
+	public Liste(Structure X, Liste Suiv) {
+		x = X;
+		suiv = Suiv;
+	}
+	
+	//
+	// Fonctions
+	//
+	
+	// EstVide 
+	public static boolean estVide(Liste l) {
+		return l == null;
+	}
+	
+	// Reste 
+	public static Liste reste(Liste l) {
+		return l.suiv;
+	}
+	
+	// Construire
+	public static Liste cons(Structure pX, Liste pL) {
+		return new Liste(pX, pL);
+	}
+	
+	// Retourne Lettre
+	public static char lettreValeur(Liste l) {
+		return l.x.getLettre();
+	}
+	
+	// Retourne Code
+	public static String codeValeur(Liste l) {
+		return l.x.getCode();
+	}
+	
+	// Insertion d'un code 
+	public static void addCode(Liste l, Structure x) {
+		Liste code = new Liste(x, null);
+		l.setSuiv(code);
+	}
+	
+	// Suppression d'un code
+	
 }
+
