@@ -28,7 +28,6 @@ public class Fonctions {
 	// Recherche codeMorse
 	public static String recherche(Liste l, char lettre) {
 		String code = null;
-		
 		if(appartient(lettre, l) == true) {
 			for(int i = 0; i < longueur(l); i++) {
 				if(lettre == Liste.lettreValeur(l)) {
@@ -38,4 +37,17 @@ public class Fonctions {
 		}
 		return code;
 	}
+	
+	// Crypte le message en morse grace a la liste de conversion
+	public static void crypte(Liste l1, Liste l2) {
+		
+	}
+	
+	// Décrypte le code de morse en lettre grace à la liste de conversion
+	public static void decrypte(Liste l1, Liste l2) {
+		
+	}
+	
+	// Transfert le text contenu dans le fichier et le stock dans une liste 
+	public static Liste transfertText()
 }
