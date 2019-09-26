@@ -74,7 +74,22 @@ public class Main {
 			Path fichierCode = Paths.get("monFichierCode");
 			Files.write(fichierCode, lignes, Charset.forName("UTF-8"));
 			List<String> lignesCodes = Files.readAllLines(Paths.get("monFichierCode"), Charset.forName("UTF-8"));
-			lignesCodes.forEach(s -> listeACoder.add(s) );
+//			lignesCodes.forEach(s -> listeACoder.add(s) );
+			lignesCodes.forEach(s ->{
+				listeACoder.add(s);
+				for(String l: s.split(" ")) {
+					for(int i = 0; i < l.length(); i++) {
+						for(int t = 0; t < corespondance.length(); t++) {
+							if(l.charAt(i) == corespondance.charAt(t)) {
+								System.out.print(" "+codeMorse[t]+" ");
+								break;
+							}
+						}
+					}
+//					System.out.println(s+" hey ");
+				}
+			});
+			
 			for (String string : lignesCodes) {
 				System.out.println(string);
 			}
@@ -94,10 +109,33 @@ public class Main {
 //			e.printStackTrace();
 //		}
 		
-		
+		Liste l = new Liste("", null);
 		try {
-			List<String> texte = Files.readAllLines(Paths.get("monFichier"), Charset.forName("UTF-8"));
-			texte.forEach(s -> System.out.println(texte)) ;
+			int i = 0;
+			List<String> texte = Files.readAllLines(Paths.get("monFichierCode"), Charset.forName("UTF-8"));
+			for(String s: texte) {
+				for(String r: s.split(" ")) {
+					i++;
+					System.out.println(i);
+					Liste.insertionChaine(l, r);
+
+					}
+					
+				}
+			
+			for(int inc = 0; inc < Fonctions.longueur(l); inc++) {
+				System.out.println(Liste.afficherChaine(l));
+				System.out.println(" hey ");
+			}
+
+			
+//			
+//			texte.forEach(s -> {
+//				for (String l: s.split(" ")) {
+//					System.out.println(s+" hey ");
+//				}
+//			}) ;
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
