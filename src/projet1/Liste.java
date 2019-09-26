@@ -1,12 +1,13 @@
 package projet1;
 
-public class Liste {
+public class Liste<T>{
 
 	//
 	// Champs
 	//
+	private T s;
 	private Structure x;
-	private Liste suiv;
+	private Liste<T> suiv;
 	
 	//
 	// Acesseurs
@@ -17,19 +18,25 @@ public class Liste {
 	public void setX(Structure x) {
 		this.x = x;
 	}
-	public Liste getSuiv() {
+	public Liste<T> getSuiv() {
 		return suiv;
 	}
-	public void setSuiv(Liste suiv) {
+	public void setSuiv(Liste<T> suiv) {
 		this.suiv = suiv;
 	}
 	
 	//
 	// Contructeur
 	//
-	public Liste(Structure X, Liste Suiv) {
-		x = X;
-		suiv = Suiv;
+
+	public Liste(T pS) {
+		s = pS;
+		suiv= null;
+	}
+	
+	public Liste(T pS, Liste<T> pSuiv) {
+		s = pS;
+		suiv= pSuiv;
 	}
 	
 	//
@@ -37,33 +44,45 @@ public class Liste {
 	//
 	
 	// EstVide 
-	public static boolean estVide(Liste l) {
+	public static boolean estVide(Liste<?> l) {
 		return l == null;
 	}
-	
+
 	// Reste 
-	public static Liste reste(Liste l) {
+	public static Liste<?> reste(Liste<?> l) {
 		return l.suiv;
 	}
-	
+
 	// Construire
-	public static Liste cons(Structure pX, Liste pL) {
-		return new Liste(pX, pL);
+	public static Liste<Structure> cons(Structure pX, Liste<Structure> pL) {
+		return new Liste<Structure>(pX, pL);
 	}
 	
 	// Retourne Lettre
-	public static char lettreValeur(Liste l) {
+	public static char lettreValeur(Liste<String> l) {
 		return l.x.getLettre();
 	}
 	
+	// Afficher Lettre
+	public static String afficherChaine(Liste<String> l) {
+		return l.s;
+	}
+	
 	// Retourne Code
-	public static String codeValeur(Liste l) {
+	public static String codeValeur(Liste<String> l) {
 		return l.x.getCode();
 	}
 	
-	// Insertion d'un code 
-	public static void addCode(Liste l, Structure x) {
-		Liste code = new Liste(x, null);
+	// Insertion d'une structure 
+		public static void insertionChaine(Liste<String> l, String s) {
+			if (l.suiv == null)
+				l.suiv = new Liste<>(s);
+			else insertionChaine(l.suiv, s);
+		}
+		
+	// Insertion d'une structure 
+	public static void addCode(Liste<Structure> l, Structure x) {
+		Liste<Structure> code = new Liste<>(x);
 		l.setSuiv(code);
 	}
 	

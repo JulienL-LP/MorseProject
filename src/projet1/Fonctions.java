@@ -1,5 +1,11 @@
 package projet1;
 
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+
 public class Fonctions {
 	
 	// Recherche dans la liste si x appartient a cette liste
@@ -49,5 +55,19 @@ public class Fonctions {
 	}
 	
 	// Transfert le text contenu dans le fichier et le stock dans une liste 
-	public static Liste transfertText()
+	public static List transfertText() {
+//		try {
+		List<String> l = null;
+		return l;
+//			List<String> liste = Files.readAllLines(Paths.get("monFichier"), Charset.forName("UTF-8"));
+//			return liste;
+////			liste.forEach(s->{
+////				System.out.print(s);
+////			});
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+	}
 }
