@@ -39,26 +39,15 @@ public class Fonctions {
 	}
 	
 	// Crypte le message en morse grace a la liste de conversion
-	// Liste texte : est une liste de mots
-	// Liste conv : est la liste de conversion 
-	public static Liste crypte(Liste texte, Liste conv) {
-		Liste listeResult = new Liste(null, null);
+	public static void crypte(Liste l1, Liste l2) {
 		
-		 for(int i = 0; i < longueur(texte); i++){
-			
-		 }
-		
-		return listeResult;
 	}
 	
 	// Décrypte le code de morse en lettre grace à la liste de conversion
-	public static void decrypte(Liste texte, Liste conv) {
+	public static void decrypte(Liste l1, Liste l2) {
 		
 	}
 	
 	// Transfert le text contenu dans le fichier et le stock dans une liste 
-	public static Liste transfertText() {
-		Liste listeResult = new Liste(null, null);
-		return listeResult;
-	}
+	public static Liste transfertText()
 }
