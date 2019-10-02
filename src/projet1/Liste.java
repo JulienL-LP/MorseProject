@@ -5,18 +5,19 @@ public class Liste<T>{
 	//
 	// Champs
 	//
-	private T s;
-	private Structure x;
+	
+	private T data;
 	private Liste<T> suiv;
 	
 	//
 	// Acesseurs
 	//
-	public Structure getX() {
-		return x;
+	
+	public T getData() {
+		return data;
 	}
-	public void setX(Structure x) {
-		this.x = x;
+	public void setData(T data) {
+		this.data = data;
 	}
 	public Liste<T> getSuiv() {
 		return suiv;
@@ -25,68 +26,67 @@ public class Liste<T>{
 		this.suiv = suiv;
 	}
 	
-	//
-	// Contructeur
-	//
-
-	public Liste(T pS) {
-		s = pS;
-		suiv= null;
+	/**
+	 * Constructeur de la classe Liste
+	 * @param pData
+	 * @param l
+	 */
+	public Liste(T pData, Liste<?> l) {
+		data = pData;
+		suiv= l;
 	}
 	
-	public Liste(T pS, Liste<T> pSuiv) {
-		s = pS;
-		suiv= pSuiv;
+	/**
+	 * Fonction permettant de construire une liste de chaine de caractère (String)
+	 * @param x = valeur de la case 
+	 * @param l = Liste das laquelle on met cette valeur
+	 * @return nouvelle Liste avec x
+	 */
+	public static Liste<String> Cons(String x, Liste<?> l) {
+		Liste<String> p;
+		p=new Liste<String>(x,l);
+		return p;
 	}
 	
-	//
-	// Fonctions
-	//
-	
-	// EstVide 
-	public static boolean estVide(Liste<?> l) {
-		return l == null;
-	}
-
-	// Reste 
-	public static Liste<?> reste(Liste<?> l) {
-		return l.suiv;
-	}
-
-	// Construire
-	public static Liste<Structure> cons(Structure pX, Liste<Structure> pL) {
-		return new Liste<Structure>(pX, pL);
-	}
-	
-	// Retourne Lettre
-	public static char lettreValeur(Liste<String> l) {
-		return l.x.getLettre();
-	}
-	
-	// Afficher Lettre
-	public static String afficherChaine(Liste<String> l) {
-		return l.s;
-	}
-	
-	// Retourne Code
-	public static String codeValeur(Liste<String> l) {
-		return l.x.getCode();
-	}
-	
-	// Insertion d'une structure 
-		public static void insertionChaine(Liste<String> l, String s) {
-			if (l.suiv == null)
-				l.suiv = new Liste<>(s);
-			else insertionChaine(l.suiv, s);
+	/**
+	 * Fcontion permettant de crée une liste
+	 * @param n = nombre de case dans la liste
+	 * @return nouvelle liste avec n case
+	 */
+	public static Liste<?> CreeListe(int n) {
+		Liste<?> l = null, p=null;
+		for(int i=n; i>0; i--) {
+			p=Cons("",l);
+			l=p;
 		}
-		
-	// Insertion d'une structure 
-	public static void addCode(Liste<Structure> l, Structure x) {
-		Liste<Structure> code = new Liste<>(x);
-		l.setSuiv(code);
+		return p;
+			
 	}
 	
-	// Suppression d'un code
+	/**
+	 * Fonction pour afficher le contenu d'une liste
+	 * @param l = liste a afficher
+	 * @return le contenu de la liste
+	 */
+	public static String Afficher(Liste<?> l) {
+		Liste<?> p=l;
+		String text = "";
+		while(p!=null) {
+			text+=p.data+",";
+			p=p.suiv;
+		}
+		return text;
+	}
+	
+	/**
+	 * Vérifie que la liste n'est pas null
+	 * @param l = liste a vérifier
+	 * @return la liste est vide ? true/false
+	 */
+	public static boolean EstVide(Liste<?> l) {
+		return l==null;
+	}
+	
 	
 }
 
