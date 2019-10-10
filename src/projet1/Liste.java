@@ -7,7 +7,7 @@ public class Liste<T>{
 	//
 	
 	private T data;
-	private Liste<T> suiv;
+	private Liste<?> suiv;
 	
 	//
 	// Acesseurs
@@ -19,7 +19,7 @@ public class Liste<T>{
 	public void setData(T data) {
 		this.data = data;
 	}
-	public Liste<T> getSuiv() {
+	public Liste<?> getSuiv() {
 		return suiv;
 	}
 	public void setSuiv(Liste<T> suiv) {
